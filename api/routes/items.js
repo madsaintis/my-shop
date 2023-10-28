@@ -8,21 +8,24 @@ const test = [{
 },{
     item: 'Training Vouchers',
     quantity: 174,
+},{
+    item: 'Strong Scrolls',
+    quantity: 12,
 }];
 
-router.get('/', (req, res) => {
-    console.log("This is from items api endpoint")
-})
+router.get('/',(req,res, next) => {
+    const {item} = req.params;
+    const {quantity} = req.query;
+    const parsedQuantity = parseInt(quantity)
 
+    const storeItem = test.find((i) => i.quantity < quantity)
+    const storeItem2 = test.filter((i) => i.quantity < quantity)
+    console.log(storeItem2)
+    res.sendStatus(200)
+    }
+)
 
-router.get('/items', (req,res, next) => {
-    console.log("uwu")
-    next()
-},(req, res) => {
-    res.send(test)
-})
-
-router.post('/items' , (req, res) => {
+router.post('/' , express.json(), (req, res) => {
     console.log(req.body);
     test.push(req.body)
     res.sendStatus(201)

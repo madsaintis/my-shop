@@ -1,5 +1,5 @@
 require('dotenv').config()
-
+require('./database')
 const express = require ('express')
 const itemsRoute = require('./routes/items')
 
@@ -10,14 +10,14 @@ const app = express();
 app.use(express.json());
 app.use(express.text());
 
+// Routes
+app.use('/api/items', itemsRoute)
+
+
 app.use((req, res, next) => {
     console.log("first middleware")
     next()
 })
-
-// Routes
-app.use('/api/items', itemsRoute)
-
 
 // Listen for requests
 app.listen(process.env.PORT, () => {
