@@ -23,3 +23,13 @@ app.listen(process.env.PORT, () => {
 })
 
 process.env
+
+app.get('/groceries', (req, res) => {
+    res.send([{
+        item: 'Pet Lethe',
+        quantity: 50,
+    },{
+        item: 'Training Vouchers',
+        quantity: 174,
+    }])
+})
