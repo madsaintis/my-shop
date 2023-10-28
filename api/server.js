@@ -2,6 +2,7 @@ require('dotenv').config()
 require('./database')
 const express = require ('express')
 const itemsRoute = require('./routes/items')
+const charactersRoute = require('./routes/items')
 
 // express app
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.text());
 
 // Routes
 app.use('/api/items', itemsRoute)
-
+app.use('/api/characters', charactersRoute)
 
 app.use((req, res, next) => {
     console.log("first middleware")
