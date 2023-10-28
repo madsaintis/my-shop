@@ -7,9 +7,11 @@ const itemsRoute = require('./routes/items')
 const app = express();
 
 // Middleware
+app.use(express.json());
+app.use(express.text());
 
 app.use((req, res, next) => {
-    console.log(req.path, req.method)
+    console.log("first middleware")
     next()
 })
 
@@ -23,13 +25,3 @@ app.listen(process.env.PORT, () => {
 })
 
 process.env
-
-app.get('/groceries', (req, res) => {
-    res.send([{
-        item: 'Pet Lethe',
-        quantity: 50,
-    },{
-        item: 'Training Vouchers',
-        quantity: 174,
-    }])
-})
