@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     const items = await Item.find();
-    res.status(200).json(items);
+    res.status(200).json(items.map(item => item.toObject()));
     }
 )
 
