@@ -1,27 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.scss'
 import Button from 'react-bootstrap/Button';
 import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+import IndexPage from '../pages/IndexPage';
+import ItemPage from '../pages/ItemPage';
+import CharacterPage from '../pages/CharacterPage';
+import PetPage from '../pages/PetPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-
-      <Header />
-
-      <Button variant="primary">Primary</Button>{' '}
-      <Button variant="secondary">Secondary</Button>{' '}
-      <Button variant="success">Success</Button>{' '}
-      <Button variant="warning">Warning</Button>{' '}
-      <Button variant="danger">Danger</Button>{' '}
-      <Button variant="info">Info</Button>{' '}
-      <Button variant="light">Light</Button>{' '}
-      <Button variant="dark">Dark</Button>
-      <Button variant="link">Link</Button>
+    <Header />
+      <Routes>
+        <Route index element={<IndexPage />} />
+        <Route path="/items" element={<ItemPage />} />
+        <Route path="/characters" element={<CharacterPage />} />
+        <Route path="/pets" element={<PetPage />} />
+      </Routes>
     </>
   );
 }

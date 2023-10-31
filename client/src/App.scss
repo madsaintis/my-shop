@@ -10,10 +10,21 @@
   padding: 1em;
   border-style: solid;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-title {
   margin-left: 20px;
+}
+
+.header-items, .header-characters, .header-pets {
+  margin: 0px 20px 0px 20px;
+  border: solid;
+  padding: 10px; 
+
+  &:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
 }
 
 .logo {

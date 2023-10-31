@@ -4,7 +4,7 @@ const express = require ('express')
 const itemsRoute = require('./routes/items')
 const charactersRoute = require('./routes/characters')
 
-// express app
+// Express app
 const app = express();
 
 // Middleware
