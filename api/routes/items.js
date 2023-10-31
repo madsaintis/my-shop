@@ -14,10 +14,10 @@ router.post('/' , express.json(), async (req, res) => {
     const itemsDB = await Item.findOne({itemname});
 
     if(itemsDB) {
-        res.status(400).send("Ish ish ish")
+        res.status(400).send("Item already exists in database.")
     }  else {
         const newItem = Item.create({ itemname, quantity, price})
-        res.status(200).send("Item added to databases")
+        res.status(201).send("Item added to databases")
     }
 })
 
