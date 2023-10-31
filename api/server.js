@@ -8,17 +8,10 @@ const charactersRoute = require('./routes/characters')
 const app = express();
 
 // Middleware
-app.use(express.json());
-app.use(express.text());
 
 // Routes
 app.use('/api/items', itemsRoute)
 app.use('/api/characters', charactersRoute)
-
-app.use((req, res, next) => {
-    console.log("first middleware")
-    next()
-})
 
 // Listen for requests
 app.listen(process.env.PORT, () => {
