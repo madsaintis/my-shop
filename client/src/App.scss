@@ -53,6 +53,26 @@
   justify-content: flex-end;
 }
 
+.add-item-page {
+  padding: 50px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: solid 1px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.add-photo-button {
+  border: 1px solid; /* Default border, you might want to define a border color */
+  background-color: transparent;
+  border-radius: 1rem; /* '2xl' typically translates to a larger radius, adjust as needed */
+  padding: 1rem; /* '4' is a spacing scale typically around 1rem, but adjust as needed */
+}
+
 .item-page {
   padding: 10px;
   border: solid;

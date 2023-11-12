@@ -1,3 +1,4 @@
+import './index.css'
 import './App.scss'
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
@@ -12,10 +13,13 @@ function App() {
     <>
     <Header />
     <div className='body'>
+    <h1 className="text-3xl underline">
+      Hello world!
+    </h1>
       <Routes>
         <Route index element={<IndexPage />} />
         <Route path="/items" element={<ItemPage />} />
-        <Route path="/items/add-item" element={<AddItemPage />} />
+        <Route path="/items/:subpage" element={<AddItemPage />} />
         <Route path="/characters" element={<CharacterPage />} />
         <Route path="/pets" element={<PetPage />} />
       </Routes>

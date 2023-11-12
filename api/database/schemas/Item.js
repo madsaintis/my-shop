@@ -15,6 +15,17 @@ const ItemSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.Decimal128,
       required: true,
     },
+    photos: [
+      {
+        type: mongoose.SchemaTypes.String,
+        validate: {
+          validator: function (v) {
+            return v.startsWith("https://your-s3-bucket-name.s3.amazonaws.com/");
+          },
+          message: (props) => `${props.value} is not a valid S3 URL!`,
+        },
+      },
+    ],
   },
   { versionKey: false }
 );

@@ -59,9 +59,8 @@ export default function ItemPage() {
   return (
     <div className='item-page'>
       <div className='add-data-button'>
-      <button className="button-31" role="button" onClick={handleAddItemClick}>Add Item</button>
+        <button className="button-31" role="button" onClick={handleAddItemClick}>Add Item</button>
       </div>
-  
       <div className='item-list'>
         {items.map((item, index) => (
           <ItemCard key={index} item={item} />
