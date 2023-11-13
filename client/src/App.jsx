@@ -13,9 +13,6 @@ function App() {
     <>
     <Header />
     <div className='body'>
-    <h1 className="text-3xl underline">
-      Hello world!
-    </h1>
       <Routes>
         <Route index element={<IndexPage />} />
         <Route path="/items" element={<ItemPage />} />
