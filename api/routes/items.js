@@ -1,4 +1,7 @@
 const express = require('express')
+const multer =  require ('multer')
+const uplaod = multer({dest: 'uploads/'})
+
 const Item = require('../database/schemas/Item')
 
 const router = express.Router()
@@ -19,6 +22,10 @@ router.post('/' , express.json(), async (req, res) => {
         const newItem = Item.create({ itemname, quantity, price})
         res.status(201).send("Item added to databases")
     }
+})
+
+router.post('/images', uplaod.single('image'), (req, res) => {
+    res.status(200).send("test")
 })
 
 module.exports = router

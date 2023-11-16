@@ -1,24 +1,61 @@
+import { useState } from "react"
+import axiosClient from "../client";
+
+async function postImage({image}) {
+  const formData = new FormData();
+  formData.append("image", image)
+
+  const result = await axiosClient.post('items/images', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+  console.log(result)
+}
 
 export default function AddItemPage() {
+  const [file, setFile] = useState()
+  const [images, setImages] = useState([])
+
+  const submit = async event => {
+    event.preventDefault()
+    const result = await postImage({image: file})
+    setImages([result.image, ...images])
+  }
+
+  const fileSelected = event => {
+    const file = event.target.files[0]
+    setFile(file)
+  }
+
   return (
     <div className="add-item-page">
       <h1>Add Item</h1>
-      <form>
-        <h2 className="form-label">Item Name</h2>
-        <input className='form-input' type="text" placeholder="Please enter the item name"></input>
-        <h2 className="form-label">Price</h2>
-        <input className='form-input' type="text" placeholder="Please enter the item price"></input>
-        <h2 className="form-label">Quantity</h2>
-        <input className='form-input' type="text" placeholder="Please enter the item quantity"></input>
-        <h2 className="form-label">Description</h2>
-        <input className='form-input' type="text" placeholder="Please enter the item description"></input>
-        <h2 className="form-label">Item Name</h2>
-        <div className="add-photo">
-          mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6
-        <button className="add-photo-button">+</button>
+      <form onSubmit={submit}>
+        <h2 className="text-xl mt-4">Item Name</h2>
+        <input type="text" placeholder="Please enter the item name" />
 
+        <h2 className="text-xl mt-4">Price</h2>
+        <input type="text" placeholder="Please enter the item price" />
+
+        <h2 className="text-xl mt-4">Quantity</h2>
+        <input type="text" placeholder="Please enter the item quantity" />
+
+        <h2 className="text-xl mt-4">Description</h2>
+        <textarea type="text" placeholder="Please enter the item description" />
+
+        <h2 className="text-xl mt-4">Photos</h2>
+        <div className="flex gap-2">
+          <input type="text" placeholder="Upload using link"></input>
+          <button className="bg-gray-200 px-4 rounded-2xl">Add photo</button>
         </div>
-     </form>
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          <button className="flex gap-2 sds bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+            </svg>
+            Upload
+          </button>
+        </div>
+        <input onChange={fileSelected} type="file" accept="image/*"></input>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   )
 }
