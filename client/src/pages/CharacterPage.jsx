@@ -47,9 +47,6 @@ export default function CharacterPage() {
     });
   }
 
-
-
-
   return (
     <div className="add-item-page">
       <h1>Add Character</h1>
