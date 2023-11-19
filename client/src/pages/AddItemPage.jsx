@@ -36,16 +36,31 @@ export default function AddItemPage() {
       <h1>Add Item</h1>
       <form onSubmit={submit}>
         <h2 className="text-xl mt-4">Item Name</h2>
-        <input type="text" placeholder="Please enter the item name" />
+        <input type="text" placeholder="Please enter the item name" value={item.name}
+              onChange={(event) => setItem(item => ({
+                ...item,
+                name: event.target.value
+              }))}
+            />
 
-        <h2 className="text-xl mt-4">Price</h2>
-        <input type="text" placeholder="Please enter the item price" />
+        <h2 className="text-xl mt-4">Item Price</h2>
+        <input type="number" placeholder="Please enter the item price" value={item.price}
+              onChange={(event) => setItem(item => ({
+                ...item,
+                price: event.target.value
+              }))}
+            />
 
         <h2 className="text-xl mt-4">Quantity</h2>
-        <input type="text" placeholder="Please enter the item quantity" />
+        <input type="number" placeholder="Please enter the item quantity" value={item.quantity}
+              onChange={(event) => setItem(item => ({
+                ...item,
+                quantity: event.target.value
+              }))}
+            />
 
         <h2 className="text-xl mt-4">Description</h2>
-        <textarea type="text" placeholder="Please enter the item description" />
+        <textarea type="text" placeholder="Please enter the character description" value={item.description} onChange={(event) => setItem(item => ({ ...item, description: event.target.value }))} />
 
         <h2 className="text-xl mt-4">Photos</h2>
         <div className="flex gap-2">
@@ -63,6 +78,7 @@ export default function AddItemPage() {
         <input onChange={fileSelected} type="file" accept="image/*"></input>
         <button type="submit">Submit</button>
       </form>
+      <pre>{JSON.stringify(item, null, 2)}</pre>
     </div>
   )
 }
