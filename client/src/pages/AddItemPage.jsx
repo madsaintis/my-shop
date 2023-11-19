@@ -12,6 +12,13 @@ async function postImage({image}) {
 export default function AddItemPage() {
   const [file, setFile] = useState()
   const [images, setImages] = useState([])
+  const [item, setItem] = useState({
+    name: "",
+    description: "",
+    quantity: 0,
+    price: null,
+    photos: []
+  })
 
   const submit = async event => {
     event.preventDefault()
